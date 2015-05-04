@@ -39,7 +39,7 @@ int m_list_remove_safe(struct m_list* list, struct m_elem* elem);
 int m_list_first(struct m_list* list, struct m_elem** out_first);
 int m_list_nth(struct m_list* list, uint64_t n, struct m_elem** out_elem);
 int m_list_last(struct m_list* list, struct m_elem** out_last);
-int m_list_map(struct m_list* list, void(*fn)(void*));
+int m_list_map(struct m_list* list, void(*fn)(void*, void*), void* payload);
 
 int m_elem_init(struct m_elem* elem, void* data, size_t size, uint8_t deep);
 int m_elem_data(struct m_elem* elem, void** out_data);
