@@ -99,6 +99,9 @@ main(void)
 ## Supported platforms
  * FreeBSD 10.0
  * OS X 10.9
+If a platform does not appear to be in the previous list, it does not mean that
+`m_list` will not work in such environment. It only means that nobody tested
+it - you are encouraged to do so and report either success or failure.
 
 ## Build
 ```
