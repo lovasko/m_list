@@ -106,6 +106,13 @@ main(void)
 }
 ```
 
+## Return values
+* `M_LIST_OK` success
+* `M_LIST_E_NULL` one of the arguments is `NULL`
+* `M_LIST_E_TOO_SHORT` the `n` in `n_list_nth` is beyond the bounds
+* `M_LIST_E_UNKNOWN_COPY` the copy type is neither `M_LIST_SHALLOW_COPY` nor `M_LIST_DEEP_COPY`
+* `M_LIST_E_NOT_PRESENT` `m_list_remove_safe` finds out that the element is not from the specified list
+
 ## Supported platforms
  * FreeBSD 10.0
  * OS X 10.9
