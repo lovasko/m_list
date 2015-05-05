@@ -37,6 +37,15 @@ To remove all elements, use `m_list_clear`.
 In order to apply a certain function to all element data, the standard _map_
 function is provided under the name `m_list_map`. 
 
+### Deep/shallow copy
+It is up to you to decide if the list element should point to already
+existing data that you `mallloc`ed earlier or whether it should be copied to a
+separate memory managed by the `m_list`. The decision is made in the
+`m_elem_init` function, namely the last argument. Possible values are either 
+`M_LIST_DEEP_COPY` for an internal copy of the memory, or `M_LIST_SHALLOW_COPY`
+for a pointer-copy only. The `size` argument (one before the last) of the
+function can be ignored with value `0` in case of the shallow copy.
+
 ## Time and space complexity
 All operations have `O(1)` space complexity.
 
@@ -58,6 +67,7 @@ All operations have `O(1)` space complexity.
 | `m_elem_data`        | `O(1)` |
 | `m_elem_next`        | `O(1)` |
 | `m_elem_prev`        | `O(1)` |
+where `n` denotes the number of list elements.
 
 ## Example
 Initialise the list with numbers between `0` to `9` inclusive and print them to
@@ -99,6 +109,7 @@ main(void)
 ## Supported platforms
  * FreeBSD 10.0
  * OS X 10.9
+
 If a platform does not appear to be in the previous list, it does not mean that
 `m_list` will not work in such environment. It only means that nobody tested
 it - you are encouraged to do so and report either success or failure.
