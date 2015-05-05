@@ -38,19 +38,17 @@ m_elem_init(struct m_elem* elem, void* data, size_t size, uint8_t deep)
 	if (deep == M_LIST_DEEP_COPY) {
 		if (data == NULL) {
 			elem->data = NULL;
-			return M_LIST_OK;
+		} else {
+			elem->data = malloc(size);
+			memcpy(elem->data, data, size);
 		}
-		elem->data = malloc(size);
-		memcpy(elem->data, data, size);
-		return M_LIST_OK;
-	}
-
-	if (deep == M_LIST_SHALLOW_COPY) {
+	} else if (deep == M_LIST_SHALLOW_COPY) {
 		elem->data = data;
-		return M_LIST_OK;
+	} else {
+		return M_LIST_E_UNKNOWN_COPY;
 	}
 
-	return M_LIST_E_UNKNOWN_COPY;
+	return M_LIST_OK;
 }
 
 int
