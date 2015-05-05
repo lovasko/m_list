@@ -4,10 +4,7 @@ POSIX-compatible systems.
 
 ## Features
 ### Initialisation
-To initialise a list, call `m_list_init` function. A slightly more complicated
-function exists with the purpose of initialising the elements - `m_elem_init`
-that expects pointer to the content data and an information whether it should
-make a deep copy of the content data in question.
+To initialise a list, call the `m_list_init` function. 
 
 ### Access
 The first and the last element of the list can be accessed with the
@@ -40,11 +37,12 @@ function is provided under the name `m_list_map`.
 ### Deep/shallow copy
 It is up to you to decide if the list element should point to already
 existing data that you `mallloc`ed earlier or whether it should be copied to a
-separate memory managed by the `m_list`. The decision is made in the
-`m_elem_init` function, namely the last argument. Possible values are either 
-`M_LIST_DEEP_COPY` for an internal copy of the memory, or `M_LIST_SHALLOW_COPY`
-for a pointer-copy only. The `size` argument (one before the last) of the
-function can be ignored with value `0` in case of the shallow copy.
+separate memory managed by the `m_list`. The decision is made in one of the  
+`m_list_append`, `m_list_prepend`, `m_list_insert` functions. Possible values
+are either `M_LIST_DEEP_COPY` for an internal copy of the memory, or
+`M_LIST_SHALLOW_COPY` for a pointer-copy only. The `size` argument (one before
+the last) of the function can be ignored with value `0` in case of the shallow
+copy.
 
 ## Time and space complexity
 All operations have `O(1)` space complexity.
@@ -73,13 +71,10 @@ where `n` denotes the number of list elements.
 Initialise the list with numbers between `0` to `9` inclusive and print them to
 the `stdout`.
 ```C
-#include <stdio.h>
-#include <stdint.h>
-#include <m_list.h>
-
 void
-print_int(void* arg)
+print_int(void* arg, void* payload)
 {
+  (void) payload;
   printf("%d ", *((int*)arg));
 }
 
@@ -87,22 +82,13 @@ int
 main(void)
 {
   struct m_list list;
-  struct m_elem* elem;
   uint8_t i;
-  int* content;
 
   m_list_init(&list);
-  for (i = 0; i < 10; i++) {
-    content = malloc(sizeof(int));
-    *content = i;
+  for (i = 0; i < 10; i++)
+    m_list_append(&list, M_LIST_COPY_DEEP, &i, sizeof(uint8_t));
 
-    struct m_elem* elem = malloc(sizeof(struct m_elem));
-    m_elem_init(elem, content, 0, M_LIST_SHALLOW_COPY);
-
-    m_list_append(&list, elem);
-  }
-
-  m_list_map(&list, print_int);
+  m_list_map(&list, print_int, NULL);
 }
 ```
 
