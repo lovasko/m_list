@@ -6,7 +6,7 @@ m_list_clear(struct m_list* list)
 	struct m_elem* runner;
 
 	for (runner = list->last; runner != NULL; ) {
-		if (runner->deep == M_LIST_DEEP_COPY)
+		if (runner->copy == M_LIST_COPY_DEEP)
 			free(runner->data);
 
 		runner = runner->prev;
@@ -47,7 +47,7 @@ m_list_remove(struct m_list* list, struct m_elem* elem)
 		elem->prev->next = elem->next;
 	}
 
-	if (elem->deep == M_LIST_DEEP_COPY)
+	if (elem->copy == M_LIST_COPY_DEEP)
 		free(elem->data);
 	free(elem);
 
@@ -77,7 +77,7 @@ m_list_remove_safe(struct m_list* list, struct m_elem* elem)
 	}
 
 	if (found) {
-		if (elem->deep == M_LIST_DEEP_COPY)
+		if (elem->copy == M_LIST_COPY_DEEP)
 			free(elem->data);
 		free(elem);
 	} else {

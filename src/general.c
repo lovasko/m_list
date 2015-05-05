@@ -26,32 +26,6 @@ m_list_size(struct m_list* list, uint64_t* out_size)
 }
 
 int
-m_elem_init(struct m_elem* elem, void* data, size_t size, uint8_t deep)
-{
-	if (elem == NULL)
-		return M_LIST_E_NULL;
-
-	elem->deep = deep;
-	elem->next = NULL;
-	elem->prev = NULL;
-	
-	if (deep == M_LIST_DEEP_COPY) {
-		if (data == NULL) {
-			elem->data = NULL;
-		} else {
-			elem->data = malloc(size);
-			memcpy(elem->data, data, size);
-		}
-	} else if (deep == M_LIST_SHALLOW_COPY) {
-		elem->data = data;
-	} else {
-		return M_LIST_E_UNKNOWN_COPY;
-	}
-
-	return M_LIST_OK;
-}
-
-int
 m_elem_data(struct m_elem* elem, void** out_data)
 {
 	if (elem == NULL || out_data == NULL)

@@ -29,11 +29,14 @@ m_list_nth(struct m_list* list, uint64_t n, struct m_elem** out_nth)
 	if (list == NULL || out_nth == NULL)
 		return M_LIST_E_NULL;
 	
+	if (list->size <= n)
+		return M_LIST_E_OUT_OF_BOUNDS;
+
 	runner = list->first;
 	for (i = 0; i < n; i++) {
-		if (runner == NULL)
-			return M_LIST_E_TOO_SHORT;
 		runner = runner->next;
+		if (runner->next == NULL)
+			return M_LIST_E_NULL;
 	}
 
 	*out_nth = runner;
