@@ -41,6 +41,7 @@ function is provided under the name `m_list_map`.
 All operations have `O(1)` space complexity.
 
 | Operation            |  Time  |
+|----------------------|--------|
 | `m_list_init`        | `O(1)` |
 | `m_list_append`      | `O(1)` |
 | `m_list_prepend`     | `O(1)` |
