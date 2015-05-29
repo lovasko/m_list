@@ -43,3 +43,23 @@ m_list_nth(struct m_list* list, uint64_t n, struct m_elem** out_nth)
 	return M_LIST_OK;
 }
 
+int
+m_elem_next(struct m_elem* elem, struct m_elem** out_next)
+{
+	if (elem == NULL || out_next == NULL)
+		return M_LIST_E_NULL;
+
+	*out_next = elem->next;
+	return M_LIST_OK;
+}
+
+int
+m_elem_prev(struct m_elem* elem, struct m_elem** out_prev)
+{
+	if (elem == NULL || out_prev == NULL)
+		return M_LIST_E_NULL;
+
+	*out_prev = elem->prev;
+	return M_LIST_OK;
+}
+
