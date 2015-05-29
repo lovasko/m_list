@@ -100,8 +100,8 @@ main(void)
 * `M_LIST_E_NOT_PRESENT` `m_list_remove_safe` finds out that the element is not from the specified list
 
 ## Supported platforms
- * FreeBSD 10.0
- * OS X 10.9
+ * FreeBSD 10.0 with Clang 3.3
+ * OS X 10.9 with Clang 3.5
 
 If a platform does not appear to be in the previous list, it does not mean that
 `m_list` will not work in such environment. It only means that nobody tested
