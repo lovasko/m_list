@@ -19,7 +19,7 @@ m_list_insert(struct m_list* list,
 	elem->copy = copy;
 	elem->next = NULL;
 	elem->prev = NULL;
-	
+
 	if (copy == M_LIST_COPY_DEEP) {
 		if (data == NULL) {
 			elem->data = NULL;
