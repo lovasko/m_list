@@ -31,8 +31,14 @@ specified list.
 To remove all elements, use `m_list_clear`.
 
 ### Algorithms
+#### Map
 In order to apply a certain function to all element data, the standard _map_
 function is provided under the name `m_list_map`. 
+#### Join
+The standard _join_ algorithm allows you to insert an element between every
+consecutive pair of elements in the list. Note that this is a very powerful
+ability when combined with shallow copies (hence the actual object exists only
+once).
 
 ### Deep/shallow copy
 It is up to you to decide if the list element should point to already
@@ -61,6 +67,7 @@ All operations have `O(1)` space complexity.
 | `m_list_remove`      | `O(1)` |
 | `m_list_remove_safe` | `O(n)` |
 | `m_list_map`         | `O(n)` |
+| `m_list_join`        | `O(n)` |
 | `m_elem_init`        | `O(1)` |
 | `m_elem_data`        | `O(1)` |
 | `m_elem_next`        | `O(1)` |
