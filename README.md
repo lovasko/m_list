@@ -102,6 +102,7 @@ main(void)
 ## Supported platforms
  * FreeBSD 10.0 with Clang 3.3
  * OS X 10.9 with Clang 3.5
+ * Linux Gentoo 2.2 with Clang 3.6
 
 If a platform does not appear to be in the previous list, it does not mean that
 `m_list` will not work in such environment. It only means that nobody tested
