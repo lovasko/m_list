@@ -89,3 +89,27 @@ m_list_remove_safe(struct m_list* list, struct m_elem* elem)
 	return M_LIST_OK;
 }
 
+int
+m_list_remove_first(struct m_list* list)
+{
+	struct m_elem* first;
+	int retval;
+
+	if ((retval = m_list_first(list, &first)) != M_LIST_OK)
+		return retval;
+	
+	return m_list_remove(list, first);
+}
+
+int
+m_list_remove_last(struct m_list* list)
+{
+	struct m_elem* last;
+	int retval;
+
+	if ((retval = m_list_last(list, &last)) != M_LIST_OK)
+		return retval;
+	
+	return m_list_remove(list, last);
+}
+

@@ -149,6 +149,31 @@ $ ./comma bananas oranges apples
 bananas, oranges, apples
 ```
 
+## Using m_list as other data structures
+
+### Stack
+By using only a certain subset of the `m_list` API, it is possible to achieve
+the functionality of the stack data structure. Since it is possible to
+manipulate with both ends of a `m_list`, it is necessary to choose one end and
+be consistent. This example will use the beginning of the list.
+#### top
+In order to see what is on top of the stack, use the `m_list_first` function.
+#### pop
+To remove the top value from the stack, use the `m_list_remove_first` function.
+#### push
+Adding to the stack is enabled by the `m_list_prepend` function.
+
+### Queue
+As with the stack, it is necessary to choose a direction of usage of the list.
+The queue in this example will retrieve elements from the beginning of the list
+and add new values to the end.
+#### peak
+To see what will be the next dequeued element, use the `m_list_first` function.
+#### enqueue
+To add elements to the queue, use the `m_list_append` function.
+#### dequeue
+To retrieve elements from the queue, use the `m_list_remove_first` function.
+
 ## Return values
 * `M_LIST_OK` success
 * `M_LIST_E_NULL` one of the arguments is `NULL`
