@@ -20,11 +20,13 @@ struct m_list
 };
 
 #define M_LIST_OK 0
-#define M_LIST_E_NULL 1
-#define M_LIST_E_OUT_OF_BOUNDS 2
-#define M_LIST_E_UNKNOWN_COPY 3
-#define M_LIST_E_NOT_PRESENT 4
-#define M_LIST_E_UNKNOWN_LOCATION 5
+#define M_LIST_NOT_FOUND 1
+
+#define M_LIST_E_NULL 2
+#define M_LIST_E_OUT_OF_BOUNDS 3
+#define M_LIST_E_UNKNOWN_COPY 4
+#define M_LIST_E_NOT_PRESENT 5
+#define M_LIST_E_UNKNOWN_LOCATION 6
 
 #define M_LIST_COPY_DEEP 0
 #define M_LIST_COPY_SHALLOW 1
@@ -51,6 +53,7 @@ int m_list_last(struct m_list* list, struct m_elem** out_last);
 
 int m_list_map(struct m_list* list, void(*fn)(void*, void*), void* payload);
 int m_list_join(struct m_list* list, uint8_t copy, void* data, size_t size);
+int m_list_find(struct m_list* list, int(*fn)(void*, void*), void* key, void** output);
 
 int m_elem_data(struct m_elem* elem, void** out_data);
 int m_elem_next(struct m_elem* elem, struct m_elem** out_next);
