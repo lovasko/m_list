@@ -54,6 +54,8 @@ int m_list_last(struct m_list* list, struct m_elem** out_last);
 int m_list_map(struct m_list* list, void(*fn)(void*, void*), void* payload);
 int m_list_join(struct m_list* list, uint8_t copy, void* data, size_t size);
 int m_list_find(struct m_list* list, int(*fn)(void*, void*), void* key, void** output);
+int m_list_filter(struct m_list* list, int(*fn)(void*, void*), void* payload);
+int m_list_zip(struct m_list* list_a, struct m_list* list_b, void(*fn)(void*, void*, void*), void* payload);
 
 int m_elem_data(struct m_elem* elem, void** out_data);
 int m_elem_next(struct m_elem* elem, struct m_elem** out_next);

@@ -3,20 +3,6 @@
 #include "m_list.h"
 
 int
-m_list_map(struct m_list* list, void(*fn)(void*, void*), void* payload)
-{
-	struct m_elem* runner;
-
-	if (list == NULL || fn == NULL)
-		return M_LIST_E_NULL;
-
-	for (runner = list->first; runner != NULL; runner = runner->next)
-		fn(runner->data, payload);
-
-	return M_LIST_OK;
-}
-
-int
 m_list_join(struct m_list* list, uint8_t copy, void* data, size_t size)
 {
 	struct m_elem* runner;
@@ -56,26 +42,5 @@ m_list_join(struct m_list* list, uint8_t copy, void* data, size_t size)
 	}
 
 	return M_LIST_OK;
-}
-
-int
-m_list_find(struct m_list* list, int(*fn)(void*, void*), void* key, void** output)
-{
-	struct m_elem* runner;
-
-	if (list == NULL || fn == NULL)
-		return M_LIST_E_NULL;
-
-	runner = list->first;
-	while (runner != NULL) {
-		if (fn(runner->data, key)) {
-			if (output != NULL)
-				*output = runner->data;
-			return M_LIST_OK;
-		}
-		runner = runner->next;
-	}
-
-	return M_LIST_NOT_FOUND;
 }
 

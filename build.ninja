@@ -8,9 +8,15 @@ rule link
  command = clang -fPIC -o $out -shared $in $ldflags
 
 build obj/access.o: compile src/access.c
-build obj/algorithm.o: compile src/algorithm.c
 build obj/general.o: compile src/general.c
 build obj/insert.o: compile src/insert.c
 build obj/remove.o: compile src/remove.c
 
-build bin/libmlist.so: link obj/access.o obj/algorithm.o obj/general.o obj/insert.o obj/remove.o
+build obj/algorithm/filter.o: compile src/algorithm/filter.c
+build obj/algorithm/find.o: compile src/algorithm/find.c
+build obj/algorithm/join.o: compile src/algorithm/join.c
+build obj/algorithm/map.o: compile src/algorithm/map.c
+build obj/algorithm/zip.o: compile src/algorithm/zip.c
+
+build bin/libmlist.so: link obj/access.o obj/general.o obj/insert.o obj/remove.o obj/algorithm/filter.o obj/algorithm/find.o obj/algorithm/join.o obj/algorithm/map.o obj/algorithm/zip.o
+
