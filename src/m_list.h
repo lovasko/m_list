@@ -9,6 +9,7 @@ struct m_elem
 	struct m_elem* next;
 	struct m_elem* prev;
 	void* data;
+	size_t size;
 	uint8_t copy;
 };
 

@@ -47,19 +47,22 @@ m_list_copy(struct m_list* list_src, struct m_list* list_dst, uint8_t copy)
 	runner_src = list_src->first;
 	while (runner_src != NULL) {
 		elem = malloc(sizeof(struct m_elem));
-		elem->copy = copy;
+		elem->size = runner_src->size;
 
 		if (runner_src->copy == M_LIST_COPY_DEEP && copy == M_LIST_COPY_DEEP) {
-			if (data == NULL) {
+			elem->copy = copy;
+			if (runner_src->data == NULL) {
 				elem->data = NULL;
 			} else {
-				elem->data = malloc(size);
-				memcpy(elem->data, data, size);
+				elem->data = malloc(runner_src->size);
+				memcpy(elem->data, runner_src->data, runner_src->size);
 			}
 		}
 
-		if (runner_src->copy == M_LIST_COPY_SHALLOW)
-			elem->data = data;
+		if (runner_src->copy == M_LIST_COPY_SHALLOW) {
+			elem->data = runner_src->data;
+			elem->copy = copy;
+		}
 
 		if (list_dst->first == NULL) {
 			list_dst->first = elem;
