@@ -32,6 +32,11 @@ m_list_nth(struct m_list* list, uint64_t n, struct m_elem** out_nth)
 	if (list->size <= n)
 		return M_LIST_E_OUT_OF_BOUNDS;
 
+	if (list->index != NULL) {
+		*out_nth = list->index[n];
+		return M_LIST_OK;
+	}
+
 	runner = list->first;
 	for (i = 0; i < n; i++) {
 		runner = runner->next;
