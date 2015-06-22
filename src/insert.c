@@ -81,6 +81,7 @@ m_list_insert(struct m_list* list,
 	}
 
 	list->size++;
+	m_list_drop_index(list);
 
 	return M_LIST_OK;
 }

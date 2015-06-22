@@ -41,6 +41,8 @@ m_list_join(struct m_list* list, uint8_t copy, void* data, size_t size)
 		runner = elem->next;
 	}
 
+	m_list_drop_index(list);
+
 	return M_LIST_OK;
 }
 

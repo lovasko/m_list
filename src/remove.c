@@ -5,6 +5,8 @@ m_list_clear(struct m_list* list)
 {
 	struct m_elem* runner;
 
+	m_list_drop_index(list);
+
 	for (runner = list->last; runner != NULL; ) {
 		if (runner->copy == M_LIST_COPY_DEEP)
 			free(runner->data);
@@ -56,6 +58,7 @@ m_list_remove(struct m_list* list, struct m_elem* elem)
 	free(elem);
 
 	list->size--;
+	m_list_drop_index(list);
 
 	return M_LIST_OK;
 }
@@ -89,6 +92,7 @@ m_list_remove_safe(struct m_list* list, struct m_elem* elem)
 	}
 
 	list->size--;
+	m_list_drop_index(list);
 
 	return M_LIST_OK;
 }
