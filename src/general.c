@@ -77,6 +77,7 @@ m_list_copy(struct m_list* list_src, struct m_list* list_dst, uint8_t copy)
 		}
 
 		list_dst->size++;
+		runner_src = runner_src->next;
 	}
 
 	return M_LIST_OK;
