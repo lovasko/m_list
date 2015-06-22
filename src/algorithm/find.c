@@ -13,11 +13,11 @@ m_list_find(struct m_list* list, int(*fn)(void*, void*), void* key, void** outpu
 		if (fn(runner->data, key)) {
 			if (output != NULL)
 				*output = runner->data;
-			return M_LIST_OK;
+			return M_LIST_TRUE;
 		}
 		runner = runner->next;
 	}
 
-	return M_LIST_NOT_FOUND;
+	return M_LIST_FALSE;
 }
 
