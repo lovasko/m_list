@@ -10,10 +10,14 @@ m_list_clear(struct m_list* list)
 			free(runner->data);
 
 		runner = runner->prev;
-		free(runner->next);
+
+		if (runner != NULL)
+			free(runner->next);
 	}
 
 	list->size = 0;
+	list->first = NULL;
+	list->last = NULL;
 
 	return M_LIST_OK;
 }
