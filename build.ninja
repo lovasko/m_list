@@ -18,5 +18,8 @@ build obj/algorithm/join.o: compile src/algorithm/join.c
 build obj/algorithm/map.o: compile src/algorithm/map.c
 build obj/algorithm/zip.o: compile src/algorithm/zip.c
 
+build obj/predicate/all.o: compile src/predicate/all.c
+build obj/predicate/one.o: compile src/predicate/one.c
+
 build bin/libmlist.so: link obj/access.o obj/general.o obj/insert.o obj/remove.o obj/algorithm/filter.o obj/algorithm/find.o obj/algorithm/join.o obj/algorithm/map.o obj/algorithm/zip.o
 
