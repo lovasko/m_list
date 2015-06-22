@@ -9,6 +9,7 @@ rule link
 
 build obj/access.o: compile src/access.c
 build obj/general.o: compile src/general.c
+build obj/index.o: compile src/index.c
 build obj/insert.o: compile src/insert.c
 build obj/remove.o: compile src/remove.c
 

@@ -18,6 +18,7 @@ struct m_list
 	struct m_elem* first;
 	struct m_elem* last;
 	uint64_t size;
+	struct m_elem** index;
 };
 
 #define M_LIST_OK                 0
@@ -52,6 +53,8 @@ int m_list_remove_last(struct m_list* list);
 
 int m_list_first(struct m_list* list, struct m_elem** out_first);
 int m_list_nth(struct m_list* list, uint64_t n, struct m_elem** out_elem);
+int m_list_build_index(struct m_list* list);
+int m_list_drop_index(struct m_list* list);
 int m_list_last(struct m_list* list, struct m_elem** out_last);
 
 int m_list_map(struct m_list* list, void(*fn)(void*, void*), void* payload);
