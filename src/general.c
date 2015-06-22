@@ -11,6 +11,7 @@ m_list_init(struct m_list* list)
 	list->first = NULL;
 	list->last = NULL;
 	list->size = 0;
+	list->index = NULL;
 
 	return M_LIST_OK;
 }
