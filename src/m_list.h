@@ -20,19 +20,20 @@ struct m_list
 	uint64_t size;
 };
 
-#define M_LIST_OK 0
-#define M_LIST_NOT_FOUND 1
+#define M_LIST_OK                 0
+#define M_LIST_E_NULL             1
+#define M_LIST_E_OUT_OF_BOUNDS    2
+#define M_LIST_E_NOT_PRESENT      3
+#define M_LIST_E_UNKNOWN_COPY     4
+#define M_LIST_E_UNKNOWN_LOCATION 5
 
-#define M_LIST_E_NULL 2
-#define M_LIST_E_OUT_OF_BOUNDS 3
-#define M_LIST_E_UNKNOWN_COPY 4
-#define M_LIST_E_NOT_PRESENT 5
-#define M_LIST_E_UNKNOWN_LOCATION 6
+#define M_LIST_TRUE  0
+#define M_LIST_FALSE 1
 
-#define M_LIST_COPY_DEEP 0
+#define M_LIST_COPY_DEEP    0
 #define M_LIST_COPY_SHALLOW 1
 
-#define M_LIST_INSERT_AFTER 0
+#define M_LIST_INSERT_AFTER  0
 #define M_LIST_INSERT_BEFORE 1
 
 int m_list_init(struct m_list* list);
