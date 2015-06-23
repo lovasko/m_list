@@ -84,3 +84,28 @@ m_list_copy(struct m_list* list_src, struct m_list* list_dst, uint8_t copy)
 	return M_LIST_OK;
 }
 
+int
+m_list_error_string(int code, char** out_error_string)
+{
+	char* error_strings[] = {
+		"OK",
+		"One of the objects is NULL",
+		"Index out of bounds",
+		"No such element is present in the list",
+		"Unknown copy method",
+		"Unknown insert location",
+		"Unknown return code"
+	};
+
+	if (out_error_string == NULL)
+		return M_LIST_E_NULL;
+
+	if (code < 0 || code > M_LIST_E_MAX) {
+		*out_error_string = NULL;
+		return M_LIST_E_UNKNOWN_CODE;
+	}
+
+	*out_error_string = error_strings[code];
+	return M_LIST_OK;
+}
+
