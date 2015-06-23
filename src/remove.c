@@ -51,6 +51,7 @@ m_list_remove(struct m_list* list, struct m_elem* elem)
 
 	if (!handle_edges(list, elem)) {
 		elem->prev->next = elem->next;
+		elem->next->prev = elem->prev;
 	}
 
 	if (elem->copy == M_LIST_COPY_DEEP)
