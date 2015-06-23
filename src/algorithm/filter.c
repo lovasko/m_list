@@ -4,7 +4,7 @@ int
 m_list_filter(struct m_list* list, int(*fn)(void*, void*), void* payload)
 {
 	struct m_elem* runner;
-	struct m_elem* prev;
+	struct m_elem* next;
 	int retval;
 	uint64_t removed_count;
 
@@ -14,13 +14,15 @@ m_list_filter(struct m_list* list, int(*fn)(void*, void*), void* payload)
 	removed_count = 0;
 	runner = list->first;
 	while (runner != NULL) {
-		if (!fn(runner->data, payload)) {
-			prev = runner->prev;	
+		if (fn(runner->data, payload)) {
+			next = runner->next;
 			if ((retval = m_list_remove(list, runner)) != M_LIST_OK)
 				return retval;
 			removed_count++;
+			runner = next;
+		} else {
+			runner = runner->next;
 		}
-		runner = prev->next;
 	}
 
 	if (removed_count > 0)
