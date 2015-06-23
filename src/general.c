@@ -10,19 +10,19 @@ m_list_init(struct m_list* list)
 
 	list->first = NULL;
 	list->last = NULL;
-	list->size = 0;
+	list->length = 0;
 	list->index = NULL;
 
 	return M_LIST_OK;
 }
 
 int
-m_list_size(struct m_list* list, uint64_t* out_size)
+m_list_length(struct m_list* list, uint64_t* out_length)
 {
-	if (list == NULL || out_size == NULL)
+	if (list == NULL || out_length == NULL)
 		return M_LIST_E_NULL;
 
-	*out_size = list->size;
+	*out_length = list->length;
 	return M_LIST_OK;
 }
 
@@ -77,7 +77,7 @@ m_list_copy(struct m_list* list_src, struct m_list* list_dst, uint8_t copy)
 			list_dst->last = elem;
 		}
 
-		list_dst->size++;
+		list_dst->length++;
 		runner_src = runner_src->next;
 	}
 

@@ -17,7 +17,7 @@ struct m_list
 {
 	struct m_elem* first;
 	struct m_elem* last;
-	uint64_t size;
+	uint64_t length;
 	struct m_elem** index;
 };
 
@@ -38,7 +38,7 @@ struct m_list
 #define M_LIST_INSERT_BEFORE 1
 
 int m_list_init(struct m_list* list);
-int m_list_size(struct m_list* list, uint64_t* out_size);
+int m_list_length(struct m_list* list, uint64_t* out_length);
 int m_list_copy(struct m_list* list_src, struct m_list* list_dst, uint8_t copy);
 
 int m_list_insert(struct m_list* list, uint8_t loc, struct m_elem* ref, uint8_t copy, void* data, size_t size);

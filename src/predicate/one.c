@@ -9,7 +9,7 @@ m_list_one(struct m_list* list, int(*fn)(void*, void*), void* payload)
 	if (list == NULL || fn == NULL)
 		return M_LIST_E_NULL;
 
-	if (list->size == 0)
+	if (list->length == 0)
 		return M_LIST_FALSE;
 
 	match = 0;

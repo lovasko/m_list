@@ -36,10 +36,10 @@ m_list_insert(struct m_list* list,
 	}
 
 	if (ref == NULL) {
-		if (list->size == 0) {
+		if (list->length == 0) {
 			list->first = elem;
 			list->last = elem;
-			list->size = 1;
+			list->length = 1;
 			return M_LIST_OK;
 		} else {
 			if (elem->copy == M_LIST_COPY_DEEP) {
@@ -80,7 +80,7 @@ m_list_insert(struct m_list* list,
 		return M_LIST_E_UNKNOWN_LOCATION;
 	}
 
-	list->size++;
+	list->length++;
 	m_list_drop_index(list);
 
 	return M_LIST_OK;

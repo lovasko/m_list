@@ -17,7 +17,7 @@ m_list_clear(struct m_list* list)
 			free(runner->next);
 	}
 
-	list->size = 0;
+	list->length = 0;
 	list->first = NULL;
 	list->last = NULL;
 
@@ -46,7 +46,7 @@ handle_edges(struct m_list* list, struct m_elem* elem)
 int
 m_list_remove(struct m_list* list, struct m_elem* elem)
 {
-	if (list->size == 0)
+	if (list->length == 0)
 		return M_LIST_E_NOT_PRESENT;
 
 	if (!handle_edges(list, elem)) {
@@ -57,7 +57,7 @@ m_list_remove(struct m_list* list, struct m_elem* elem)
 		free(elem->data);
 	free(elem);
 
-	list->size--;
+	list->length--;
 	m_list_drop_index(list);
 
 	return M_LIST_OK;
@@ -71,7 +71,7 @@ m_list_remove_safe(struct m_list* list, struct m_elem* elem)
 
 	found = 0;
 
-	if (list->size == 0)
+	if (list->length == 0)
 		return M_LIST_E_NOT_PRESENT;
 
 	if (!handle_edges(list, elem)) {
@@ -91,7 +91,7 @@ m_list_remove_safe(struct m_list* list, struct m_elem* elem)
 		return M_LIST_E_NOT_PRESENT;
 	}
 
-	list->size--;
+	list->length--;
 	m_list_drop_index(list);
 
 	return M_LIST_OK;

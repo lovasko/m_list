@@ -11,7 +11,7 @@ m_list_build_index(struct m_list* list)
 
 	m_list_drop_index(list);
 
-	list->index = malloc(sizeof(struct m_elem*) * list->size);
+	list->index = malloc(sizeof(struct m_elem*) * list->length);
 	i = 0;
 	runner = list->first;
 	while (runner != NULL) {

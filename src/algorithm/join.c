@@ -37,7 +37,7 @@ m_list_join(struct m_list* list, uint8_t copy, void* data, size_t size)
 
 		runner->next->prev = elem;
 		runner->next = elem;
-		list->size++;
+		list->length++;
 		runner = elem->next;
 	}
 
