@@ -21,6 +21,7 @@ build obj/algorithm/zip.o: compile src/algorithm/zip.c
 
 build obj/predicate/all.o: compile src/predicate/all.c
 build obj/predicate/one.o: compile src/predicate/one.c
+build obj/predicate/is_sorted.o: compile src/predicate/is_sorted.c
 
-build bin/libmlist.so: link obj/access.o obj/general.o obj/index.o obj/insert.o obj/remove.o obj/algorithm/filter.o obj/algorithm/find.o obj/algorithm/join.o obj/algorithm/map.o obj/algorithm/zip.o obj/predicate/all.o obj/predicate/one.o
+build bin/libmlist.so: link obj/access.o obj/general.o obj/index.o obj/insert.o obj/remove.o obj/algorithm/filter.o obj/algorithm/find.o obj/algorithm/join.o obj/algorithm/map.o obj/algorithm/zip.o obj/predicate/all.o obj/predicate/one.o obj/predicate/is_sorted.o
 
