@@ -68,8 +68,10 @@ int m_list_find(struct m_list* list, int(*fn)(void*, void*), void* key, void** o
 int m_list_filter(struct m_list* list, int(*fn)(void*, void*), void* payload);
 int m_list_zip(struct m_list* list_a, struct m_list* list_b, void(*fn)(void*, void*, void*), void* payload);
 
-int m_list_all(struct m_list* list, int(*fn)(void*, void*), void* payload);
-int m_list_one(struct m_list* list, int(*fn)(void*, void*), void* payload);
+int m_list_match_all(struct m_list* list, int(*fn)(void*, void*), void* payload);
+int m_list_match_any(struct m_list* list, int(*fn)(void*, void*), void* payload);
+int m_list_match_exactly(struct m_list* list, int(*fn)(void*, void*), uint64_t count, void* payload);
+int m_list_match_at_least(struct m_list* list, int(*fn)(void*, void*), uint64_t count, void* payload);
 int m_list_is_sorted(struct m_list* list, int(*cmp_fn)(void*, void*));
 
 int m_elem_data(struct m_elem* elem, void** out_data);
