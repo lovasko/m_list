@@ -22,7 +22,7 @@ merge_sort(struct m_elem* first, uint64_t length, int(*cmp_fn)(void*, void*))
 			a_size = 0;
 			for (i = 0; i < segment_size; i++) {
 				a_size++;
-		    b = b->next;
+				b = b->next;
 				if (b == NULL)
 					break;
 			}
@@ -45,7 +45,7 @@ merge_sort(struct m_elem* first, uint64_t length, int(*cmp_fn)(void*, void*))
 				else
 					first = e;
 
-		    e->prev = tail;
+				e->prev = tail;
 				tail = e;
 			}
 			a = b;
