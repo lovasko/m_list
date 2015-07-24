@@ -2,7 +2,7 @@
 Add all program arguments to the list and interconnect all the words with a
 comma.
 ```C
-void
+static void
 print_string(void* arg, void* payload)
 {
   (void)payload;

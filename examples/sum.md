@@ -2,7 +2,7 @@
 Initialise the list with numbers between `1` to `10` inclusive and print them to
 the `stdout`.
 ```C
-void
+static void
 add(void* arg, void* sum)
 {
   *((uint8_t*)sum) += *((uint8_t*)arg);
