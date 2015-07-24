@@ -102,12 +102,45 @@ To add elements to the queue, use the `m_list_append` function.
 #### dequeue
 To retrieve elements from the queue, use the `m_list_remove_first` function.
 
-## Return values
-* `M_LIST_OK` success
-* `M_LIST_E_NULL` one of the arguments is `NULL`
-* `M_LIST_E_TOO_SHORT` the `n` in `n_list_nth` is beyond the bounds
-* `M_LIST_E_UNKNOWN_COPY` the copy type is neither `M_LIST_SHALLOW_COPY` nor `M_LIST_DEEP_COPY`
-* `M_LIST_E_NOT_PRESENT` `m_list_remove_safe` finds out that the element is not from the specified list
+## Return codes
+### `M_LIST_OK`
+Used by all algorithms and general-purpose functions in case of a successful
+run of the function.
+
+### `M_LIST_TRUE`
+Used by all predicates and some of the general-purpose functions to indicate
+that the expected conditions were met.
+
+### `M_LIST_FALSE`
+Used by all predicates and some of the general-purpose functions to indicate
+that the expected conditions were _not_ met. It is important to note that this
+return code is _not_ an error, but a valid logic value.
+
+### `M_LIST_E_NULL`
+Used by every function to indicate that one or more of the essential arguments
+were `NULL`. Arguments such as `payload` can hold the value of `NULL`, since it
+might be a valid value picked by the user.
+
+### `M_LIST_E_OUT_OF_BOUNDS`
+Used by functions that expect an index or a count that relates to the elements.
+This return codes indicates that the number supplied is larger than the length
+of the list.
+
+### `M_LIST_E_NOT_PRESENT`
+Returned by the `m_list_remove_safe` function in case that the element selected
+for removal is not present in the list.
+
+### `M_LIST_E_UNKNOWN_COPY`
+Returned in case that the `copy` argument of a function is not one of the
+following: `M_LIST_COPY_SHALLOW`, `M_LIST_COPY_DEEP`.
+
+### `M_LIST_E_UNKNOWN_LOCATION`
+Returned in case that the `loc` argument of a function is not one of the
+following: `M_LIST_INSERT_BEFORE`, `M_LIST_INSERT_AFTER`.
+
+### `M_LIST_E_UNKNOWN_CODE`
+Returned by the `m_list_error_string` function, in case that the queries return
+code does not exists.
 
 ## Supported platforms
  * FreeBSD 10.0 with Clang 3.3
