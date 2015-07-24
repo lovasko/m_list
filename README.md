@@ -74,83 +74,11 @@ All operations have `O(1)` space complexity.
 | `m_elem_prev`        | `O(1)` |
 where `n` denotes the number of list elements.
 
-## Example
-### Sum of integers
-Initialise the list with numbers between `1` to `10` inclusive and print them to
-the `stdout`.
-```C
-void
-add(void* arg, void* sum)
-{
-  *((uint8_t*)sum) += *((uint8_t*)arg);
-}
-
-int
-main(void)
-{
-  struct m_list list;
-  uint8_t i;
-  uint8_t sum;
-
-  m_list_init(&list);
-  for (i = 0; i < 10; i++)
-    m_list_append(&list, M_LIST_COPY_DEEP, &i, sizeof(uint8_t));
-
-  sum = 0;
-  m_list_map(&list, add, &sum);
-  printf("sum = %d\n", sum);
-
-  return EXIT_SUCCESS;
-}
-```
-
-Compile & run:
-
-```
-$ clang -o sum sum.c -lmlist
-$ ./sum
-sum = 55
-```
-
-### List of words with commas
-Add all program arguments to the list and interconnect all the words with a
-comma.
-```C
-void
-print_string(void* arg, void* payload)
-{
-  (void)payload;
-  printf("%s", (char*)arg);
-}
-
-int
-main(int argc, char* argv[])
-{
-  struct m_list list;
-  int i;
-
-  m_list_init(&list);
-  for (i = 1; i < argc; i++)
-    m_list_append(&list, M_LIST_COPY_SHALLOW, argv[i], 0);
-
-  m_list_join(&list, M_LIST_COPY_SHALLOW, ", ", 0);
-  m_list_map(&list, print_string, NULL);
-  printf("\n");
-
-  return EXIT_SUCCESS;
-}
-```
-
-Compile & run:
-
-```
-$ clang -o comma comma.c -lmlist
-$ ./comma bananas oranges apples
-bananas, oranges, apples
-```
+## Examples
+ * [Sum of integers](examples/sum.md)
+ * [Comma-separated words](examples/commas.md)
 
 ## Using m_list as other data structures
-
 ### Stack
 By using only a certain subset of the `m_list` API, it is possible to achieve
 the functionality of the stack data structure. Since it is possible to
