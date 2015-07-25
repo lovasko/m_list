@@ -74,7 +74,7 @@ int m_list_match_exactly(struct m_list* list, int(*fn)(void*, void*), uint64_t c
 int m_list_match_at_least(struct m_list* list, int(*fn)(void*, void*), uint64_t count, void* payload);
 
 int m_list_is_sorted(struct m_list* list, int(*cmp_fn)(void*, void*));
-int m_list_sort(struct m_list* list, int(*cmp_fn)(void*, void*));
+int m_list_sort(struct m_list* list, int(*cmp_fn)(void*, void*, void*), void*);
 
 int m_elem_data(struct m_elem* elem, void** out_data);
 int m_elem_next(struct m_elem* elem, struct m_elem** out_next);

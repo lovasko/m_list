@@ -1,7 +1,10 @@
 #include "m_list.h"
 
 static struct m_elem*
-merge_sort(struct m_elem* first, uint64_t length, int(*cmp_fn)(void*, void*))
+merge_sort(struct m_elem* first,
+           uint64_t length,
+           int(*cmp_fn)(void*, void*, void*),
+           void* payload)
 {
 	struct m_elem* a;
 	struct m_elem* b;
@@ -34,7 +37,7 @@ merge_sort(struct m_elem* first, uint64_t length, int(*cmp_fn)(void*, void*))
 					e = b; b = b->next; b_size--;
 				} else if (b_size == 0 || b == NULL) {
 					e = a; a = a->next; a_size--;
-				} else if (cmp_fn(a->data, b->data) <= 0) {
+				} else if (cmp_fn(a->data, b->data, payload) <= 0) {
 					e = a; a = a->next; a_size--;
 				} else {
 					e = b; b = b->next; b_size--;
@@ -57,7 +60,9 @@ merge_sort(struct m_elem* first, uint64_t length, int(*cmp_fn)(void*, void*))
 }
 
 int
-m_list_sort(struct m_list* list, int(*cmp_fn)(void*, void*))
+m_list_sort(struct m_list* list,
+            int(*cmp_fn)(void*, void*, void*),
+            void* payload)
 {
 	if (list == NULL || cmp_fn == NULL)
 		return M_LIST_E_NULL;
@@ -65,7 +70,7 @@ m_list_sort(struct m_list* list, int(*cmp_fn)(void*, void*))
 	if (list->length < 2)
 		return M_LIST_OK;
 
-	list->first = merge_sort(list->first, list->length, cmp_fn);
+	list->first = merge_sort(list->first, list->length, cmp_fn, payload);
 	return M_LIST_OK;
 }
 
