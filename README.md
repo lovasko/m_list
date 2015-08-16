@@ -45,8 +45,8 @@ It is up to you to decide if the list element should point to already
 existing data that you `mallloc`ed earlier or whether it should be copied to a
 separate memory managed by the `m_list`. The decision is made in one of the  
 `m_list_append`, `m_list_prepend`, `m_list_insert` functions. Possible values
-are either `M_LIST_DEEP_COPY` for an internal copy of the memory, or
-`M_LIST_SHALLOW_COPY` for a pointer-copy only. The `size` argument (one before
+are either `M_LIST_COPY_DEEP` for an internal copy of the memory, or
+`M_LIST_COPY_SHALLOW` for a pointer-copy only. The `size` argument (one before
 the last) of the function can be ignored with value `0` in case of the shallow
 copy.
 
