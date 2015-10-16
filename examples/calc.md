@@ -2,7 +2,7 @@
 This example showcases the usage of `m_list` as a stack. To demonstrate the
 approach, we will create a postfix calculator for `float`ing point numbers that
 supports operations `+`, `-`, `*` and `/`. In order to print the result and
-exit, use the command `=`'.
+exit, use the command `=`.
 
 Code:
 ```C
@@ -105,7 +105,6 @@ main(void)
 }
 ```
 
-#### Usage
 Compile and run:
 ```
 $ clang -o calc calc.c -lmlist
@@ -120,10 +119,18 @@ Python script to generate the postfix notation of the Netwon formula:
 import sys
 
 def up(n):
-	print "1 " + " * ".join([str(x) for x in xrange(n*2) if x % 2 == 1]) + " * "
+	print "1 " \
+	    + " * ".join([str(x) for x in xrange(n*2) if x % 2 == 1]) \
+	    + " * "
 
 def down(n):
-	print "1 " + " * ".join([str(x) for x in xrange(2, n*2+1) if x % 2 == 0]) + " * " + str((n*2 + 1)) + " * " + str(pow(2, (n*2 + 1))) + " * "
+	print "1 " \
+	    + " * ".join([str(x) for x in xrange(2, n*2+1) if x % 2 == 0]) \
+	    + " * " \
+	    + str((n*2 + 1)) \
+	    + " * "  \
+	    + str(pow(2, (n*2 + 1))) \
+	    + " * "
 
 print 0
 for i in xrange(1, int(sys.argv[1])):
