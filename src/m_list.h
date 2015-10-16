@@ -49,7 +49,7 @@ int m_list_append(struct m_list* list, uint8_t copy, void* data, size_t size);
 int m_list_prepend(struct m_list* list, uint8_t copy, void* data, size_t size);
 
 int m_list_is_empty(struct m_list* list);
-int m_list_clear(struct m_list* list);
+int m_list_remove_all(struct m_list* list);
 int m_list_remove(struct m_list* list, struct m_elem* elem);
 int m_list_remove_safe(struct m_list* list, struct m_elem* elem);
 int m_list_remove_first(struct m_list* list);

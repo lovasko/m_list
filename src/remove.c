@@ -1,7 +1,7 @@
 #include "m_list.h"
 
 int
-m_list_clear(struct m_list* list)
+m_list_remove_all(struct m_list* list)
 {
 	struct m_elem* runner;
 
