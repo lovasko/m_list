@@ -95,6 +95,9 @@ where `n` denotes the number of list elements.
 ## Examples
  * [Sum of integers](examples/sum.md)
  * [Comma-separated words](examples/commas.md)
+ * [Postfix calculator] (examples/calc.md)
+ * [Fizz buzz] (examples/fizz_buzz.md)
+ * [String palindrome test] (examples/palindrome.md)
 
 ## Using m_list as other data structures
 ### Stack
