@@ -20,9 +20,10 @@ build obj/algorithm/map.o: compile src/algorithm/map.c
 build obj/algorithm/sort.o: compile src/algorithm/sort.c
 build obj/algorithm/zip.o: compile src/algorithm/zip.c
 
+build obj/predicate/equal.o: compile src/predicate/equal.c
 build obj/predicate/match.o: compile src/predicate/match.c
 build obj/predicate/is_sorted.o: compile src/predicate/is_sorted.c
 build obj/predicate/is_empty.o: compile src/predicate/is_empty.c
 
-build bin/libmlist.so: link obj/access.o obj/general.o obj/index.o obj/insert.o obj/remove.o obj/algorithm/filter.o obj/algorithm/find.o obj/algorithm/join.o obj/algorithm/map.o obj/algorithm/sort.o obj/algorithm/zip.o obj/predicate/match.o obj/predicate/is_sorted.o obj/predicate/is_empty.o
+build bin/libmlist.so: link obj/access.o obj/general.o obj/index.o obj/insert.o obj/remove.o obj/algorithm/filter.o obj/algorithm/find.o obj/algorithm/join.o obj/algorithm/map.o obj/algorithm/sort.o obj/algorithm/zip.o obj/predicate/equal.o obj/predicate/match.o obj/predicate/is_sorted.o obj/predicate/is_empty.o
 
