@@ -51,27 +51,45 @@ the last) of the function can be ignored with value `0` in case of the shallow
 copy.
 
 ## Time and space complexity
-All operations have `O(1)` space complexity.
-
-| Operation            |  Time  |
-|----------------------|--------|
-| `m_list_init`        | `O(1)` |
-| `m_list_append`      | `O(1)` |
-| `m_list_prepend`     | `O(1)` |
-| `m_list_insert`      | `O(1)` |
-| `m_list_length`      | `O(1)` |
-| `m_list_first`       | `O(1)` |
-| `m_list_last`        | `O(1)` |
-| `m_list_nth`         | `O(n)` |
-| `m_list_clear`       | `O(n)` |
-| `m_list_remove`      | `O(1)` |
-| `m_list_remove_safe` | `O(n)` |
-| `m_list_map`         | `O(n)` |
-| `m_list_join`        | `O(n)` |
-| `m_elem_init`        | `O(1)` |
-| `m_elem_data`        | `O(1)` |
-| `m_elem_next`        | `O(1)` |
-| `m_elem_prev`        | `O(1)` |
+All operations have `O(1)` space complexity, with the exception of
+`m_list_build_index` with space complexity of `O(n)`.
+| Operation                    |  Time            |
+| `m_elem_data`                | `O(1)`           |
+| `m_elem_next`                | `O(1)`           |
+| `m_elem_prev`                | `O(1)`           |
+| `m_list_append`              | `O(1)`           |
+| `m_list_build_index`         | `O(n)`           |
+| `m_list_copy`                | `O(n)`           |
+| `m_list_drop_index`          | `O(1)`           |
+| `m_list_equal`               | `O(n)`           |
+| `m_list_error_string`        | `O(1)`           |
+| `m_list_filter`              | `O(n)`           |
+| `m_list_find`                | `O(n)`           |
+| `m_list_first`               | `O(1)`           |
+| `m_list_generate`            | `O(n)`           |
+| `m_list_init`                | `O(n)`           |
+| `m_list_insert`              | `O(1)`           |
+| `m_list_is_empty`            | `O(1)`           |
+| `m_list_is_sorted`           | `O(n)`           |
+| `m_list_join`                | `O(n)`           |
+| `m_list_last`                | `O(1)`           |
+| `m_list_length`              | `O(1)`           |
+| `m_list_map2`                | `O(n)`           |
+| `m_list_map`                 | `O(n)`           |
+| `m_list_match_all`           | `O(n)`           |
+| `m_list_match_any`           | `O(n)`           |
+| `m_list_match_at_least`      | `O(n)`           |
+| `m_list_match_exactly`       | `O(n)`           |
+| `m_list_nth`                 | `O(1)` or `O(n)` |
+| `m_list_prepend`             | `O(1)`           |
+| `m_list_remove_all`          | `O(n)`           |
+| `m_list_remove_first`        | `O(1)`           |
+| `m_list_remove_last`         | `O(1)`           |
+| `m_list_remove_safe`         | `O(n)`           |
+| `m_list_remove`              | `O(1)`           |
+| `m_list_reverse`             | `O(n)`           |
+| `m_list_sort`                | `O(nlogn)`       |
+| `m_list_zip`                 | `O(n)`           |
 where `n` denotes the number of list elements.
 
 ## Examples
