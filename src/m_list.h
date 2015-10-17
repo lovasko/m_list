@@ -69,6 +69,7 @@ int m_list_join(struct m_list* list, uint8_t copy, void* data, size_t size);
 int m_list_find(struct m_list* list, int(*fn)(void*, void*), void* key, void** output);
 int m_list_filter(struct m_list* list, int(*fn)(void*, void*), void* payload);
 int m_list_zip(struct m_list* list_a, struct m_list* list_b, void(*fn)(void*, void*, void*), void* payload);
+int m_list_reverse(struct m_list* list);
 
 int m_list_equal(struct m_list* list_a, struct m_list* list_b);
 
