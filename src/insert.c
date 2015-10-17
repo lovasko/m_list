@@ -98,3 +98,28 @@ m_list_prepend(struct m_list* list, uint8_t copy, void* data, size_t size)
 	return m_list_insert(list, M_LIST_INSERT_BEFORE, list->first, copy, data, size);
 }
 
+int
+m_list_generate(struct m_list* list,
+                uint8_t copy,
+                void(*gen_fn)(uint64_t, void*, void**, size_t*),
+                uint64_t n,
+                void* payload)
+{
+	uint64_t i;
+	void* data;
+	size_t size;
+
+	if (list == NULL || gen_fn == NULL)
+		return M_LIST_E_NULL;
+
+	if (n == 0)
+		return M_LIST_OK;
+
+	for (i = 0; i < n; i++) {
+		gen_fn(i, payload, &data, &size);
+		m_list_append(list, copy, data, size);
+	}
+
+	return M_LIST_OK;
+}
+
