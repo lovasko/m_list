@@ -123,3 +123,28 @@ m_list_generate(struct m_list* list,
 	return M_LIST_OK;
 }
 
+int
+m_list_concat(struct m_list* list_src, struct m_list* list_dst)
+{
+	if (list_src == NULL || list_dst == NULL)
+		return M_LIST_E_NULL;
+
+	if (list_dst->length == 0) {
+		list_dst->first = list_src->first;
+		list_dst->last = list_src->last;
+	} else {
+		list_dst->last->next = list_src->first;
+		list_src->first->prev = list_dst->last;
+	}
+	
+	list_dst->length += list_src->length;
+	m_list_drop_index(list_dst);
+
+	list_src->first = NULL;
+	list_src->last = NULL;
+	list_src->length = 0;
+	m_list_drop_index(list_src);
+
+	return M_LIST_OK;
+}
+

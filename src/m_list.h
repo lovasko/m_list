@@ -48,6 +48,7 @@ int m_list_insert(struct m_list* list, uint8_t loc, struct m_elem* ref, uint8_t 
 int m_list_append(struct m_list* list, uint8_t copy, void* data, size_t size);
 int m_list_prepend(struct m_list* list, uint8_t copy, void* data, size_t size);
 int m_list_generate(struct m_list* list, uint8_t copy, void(*gen_fn)(uint64_t, void*, void**, size_t*), uint64_t n, void* payload);
+int m_list_concat(struct m_list* list_src, struct m_list* list_dst);
 
 int m_list_is_empty(struct m_list* list);
 int m_list_remove_all(struct m_list* list);
