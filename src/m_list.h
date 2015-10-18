@@ -22,16 +22,15 @@ struct m_list
 };
 
 #define M_LIST_OK                 0
-#define M_LIST_E_NULL             1
-#define M_LIST_E_OUT_OF_BOUNDS    2
-#define M_LIST_E_NOT_PRESENT      3
-#define M_LIST_E_UNKNOWN_COPY     4
-#define M_LIST_E_UNKNOWN_LOCATION 5
-#define M_LIST_E_UNKNOWN_CODE     6
-#define M_LIST_E_MAX              6
-
-#define M_LIST_TRUE  0
-#define M_LIST_FALSE 1
+#define M_LIST_TRUE               1
+#define M_LIST_FALSE              2
+#define M_LIST_E_NULL             3
+#define M_LIST_E_OUT_OF_BOUNDS    4
+#define M_LIST_E_NOT_PRESENT      5
+#define M_LIST_E_UNKNOWN_COPY     6
+#define M_LIST_E_UNKNOWN_LOCATION 7
+#define M_LIST_E_UNKNOWN_CODE     8
+#define M_LIST_E_MAX              8
 
 #define M_LIST_COPY_DEEP    0
 #define M_LIST_COPY_SHALLOW 1

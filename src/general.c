@@ -89,6 +89,8 @@ m_list_error_string(int code, char** out_error_string)
 {
 	char* error_strings[] = {
 		"OK",
+		"True",
+		"False",
 		"One of the objects is NULL",
 		"Index out of bounds",
 		"No such element is present in the list",
