@@ -4,8 +4,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-struct m_elem
-{
+struct m_elem {
 	struct m_elem* next;
 	struct m_elem* prev;
 	void* data;
@@ -13,8 +12,7 @@ struct m_elem
 	uint8_t copy;
 };
 
-struct m_list
-{
+struct m_list {
 	struct m_elem* first;
 	struct m_elem* last;
 	uint64_t length;
