@@ -53,7 +53,8 @@ copy.
 ## Time and space complexity
 All operations have `O(1)` space complexity, with the exception of
 `m_list_build_index` with space complexity of `O(n)`.
-| Operation                    |  Time            |
+| Operation                    | Time             |
+| ---------------------------- | ---------------- |
 | `m_elem_data`                | `O(1)`           |
 | `m_elem_next`                | `O(1)`           |
 | `m_elem_prev`                | `O(1)`           |
