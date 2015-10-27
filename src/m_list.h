@@ -82,6 +82,7 @@ int m_list_is_sorted(struct m_list* list, int(*cmp_fn)(void*, void*));
 int m_list_sort(struct m_list* list, int(*cmp_fn)(void*, void*, void*), void*);
 
 int m_elem_data(struct m_elem* elem, void** out_data);
+int m_elem_data_size(struct m_elem* elem, size_t* out_size);
 int m_elem_next(struct m_elem* elem, struct m_elem** out_next);
 int m_elem_prev(struct m_elem* elem, struct m_elem** out_prev);
 

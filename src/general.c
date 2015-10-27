@@ -37,6 +37,16 @@ m_elem_data(struct m_elem* elem, void** out_data)
 }
 
 int
+m_elem_data_size(struct m_elem* elem, size_t* out_size)
+{
+	if (elem == NULL || out_size == NULL)
+		return M_LIST_E_NULL;
+
+	*out_size = elem->size;
+	return M_LIST_OK;
+}
+
+int
 m_list_copy(struct m_list* list_src, struct m_list* list_dst, uint8_t copy)
 {
 	struct m_elem* runner_src;
