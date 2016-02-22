@@ -62,6 +62,7 @@ int m_list_drop_index(struct m_list* list);
 int m_list_last(struct m_list* list, struct m_elem** out_last);
 
 int m_list_map(struct m_list* list, void(*fn)(void*, void*), void* payload);
+int m_list_map_ex(struct m_list* list, void(*fn)(struct m_elem*, uint64_t, void*), void* payload);
 int m_list_map2(struct m_list* list, void(*fn)(void*, void*, void*), void* payload1, void* payload2);
 
 int m_list_join(struct m_list* list, uint8_t copy, void* data, size_t size);
