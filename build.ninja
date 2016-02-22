@@ -1,4 +1,4 @@
-cflags = -g -fPIC -Isrc -ansi -pedantic -Wall -Wextra
+cflags = -g -fPIC -Isrc -ansi -pedantic -Wall -Wextra -Weverything
 ldflags = 
 
 rule compile

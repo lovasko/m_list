@@ -95,9 +95,9 @@ m_list_copy(struct m_list* list_src, struct m_list* list_dst, uint8_t copy)
 }
 
 int
-m_list_error_string(int code, char** out_error_string)
+m_list_error_string(int code, const char** out_error_string)
 {
-	char* error_strings[] = {
+	static const char* error_strings[] = {
 		"OK",
 		"True",
 		"False",

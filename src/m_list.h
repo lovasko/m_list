@@ -10,6 +10,7 @@ struct m_elem {
 	void* data;
 	size_t size;
 	uint8_t copy;
+	char padding[sizeof(void*)-1];
 };
 
 struct m_list {
@@ -39,7 +40,7 @@ struct m_list {
 int m_list_init(struct m_list* list);
 int m_list_length(struct m_list* list, uint64_t* out_length);
 int m_list_copy(struct m_list* list_src, struct m_list* list_dst, uint8_t copy);
-int m_list_error_string(int code, char** out_error_string);
+int m_list_error_string(int code, const char** out_error_string);
 
 int m_list_insert(struct m_list* list, uint8_t loc, struct m_elem* ref, uint8_t copy, void* data, size_t size);
 int m_list_append(struct m_list* list, uint8_t copy, void* data, size_t size);
