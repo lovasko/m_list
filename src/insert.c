@@ -3,19 +3,19 @@
 #include "m_list.h"
 
 int
-m_list_insert(struct m_list* list,
+m_list_insert(m_list* list,
               uint8_t loc,
-              struct m_elem* ref,
+              m_list_elem* ref,
               uint8_t copy,
               void* data,
               size_t size)
 {
-	struct m_elem* elem;
+	m_list_elem* elem;
 
 	if (list == NULL)
 		return M_LIST_E_NULL;
 
-	elem = malloc(sizeof(struct m_elem));	
+	elem = malloc(sizeof(m_list_elem));	
 	elem->copy = copy;
 	elem->next = NULL;
 	elem->prev = NULL;
@@ -87,19 +87,19 @@ m_list_insert(struct m_list* list,
 }
 
 int
-m_list_append(struct m_list* list, uint8_t copy, void* data, size_t size)
+m_list_append(m_list* list, uint8_t copy, void* data, size_t size)
 {
 	return m_list_insert(list, M_LIST_INSERT_AFTER, list->last, copy, data, size);
 }
 
 int
-m_list_prepend(struct m_list* list, uint8_t copy, void* data, size_t size)
+m_list_prepend(m_list* list, uint8_t copy, void* data, size_t size)
 {
 	return m_list_insert(list, M_LIST_INSERT_BEFORE, list->first, copy, data, size);
 }
 
 int
-m_list_generate(struct m_list* list,
+m_list_generate(m_list* list,
                 uint8_t copy,
                 void(*gen_fn)(uint64_t, void*, void**, size_t*),
                 uint64_t n,
@@ -124,7 +124,7 @@ m_list_generate(struct m_list* list,
 }
 
 int
-m_list_concat(struct m_list* list_src, struct m_list* list_dst)
+m_list_concat(m_list* list_src, m_list* list_dst)
 {
 	if (list_src == NULL || list_dst == NULL)
 		return M_LIST_E_NULL;

@@ -1,11 +1,9 @@
 #include "m_list.h"
 
 int
-m_list_remove_all(struct m_list* list)
+m_list_remove_all(m_list* list)
 {
-	struct m_elem* runner;
-
-	m_list_drop_index(list);
+	m_list_elem* runner;
 
 	for (runner = list->last; runner != NULL; ) {
 		if (runner->copy == M_LIST_COPY_DEEP)
@@ -20,12 +18,13 @@ m_list_remove_all(struct m_list* list)
 	list->length = 0;
 	list->first = NULL;
 	list->last = NULL;
+	m_list_drop_index(list);
 
 	return M_LIST_OK;
 }
 
 static int
-handle_edges(struct m_list* list, struct m_elem* elem)
+handle_edges(m_list* list, m_list_elem* elem)
 {
 	if (elem == list->first && elem == list->last) {
 		list->first = NULL;
@@ -44,7 +43,7 @@ handle_edges(struct m_list* list, struct m_elem* elem)
 }
 
 int
-m_list_remove(struct m_list* list, struct m_elem* elem)
+m_list_remove(m_list* list, m_list_elem* elem)
 {
 	if (list->length == 0)
 		return M_LIST_E_NOT_PRESENT;
@@ -65,9 +64,9 @@ m_list_remove(struct m_list* list, struct m_elem* elem)
 }
 
 int
-m_list_remove_safe(struct m_list* list, struct m_elem* elem)
+m_list_remove_safe(m_list* list, m_list_elem* elem)
 {
-	struct m_elem* runner;
+	m_list_elem* runner;
 	uint8_t found;
 
 	found = 0;
@@ -99,9 +98,9 @@ m_list_remove_safe(struct m_list* list, struct m_elem* elem)
 }
 
 int
-m_list_remove_first(struct m_list* list)
+m_list_remove_first(m_list* list)
 {
-	struct m_elem* first;
+	m_list_elem* first;
 	int retval;
 
 	if ((retval = m_list_first(list, &first)) != M_LIST_OK)
@@ -111,9 +110,9 @@ m_list_remove_first(struct m_list* list)
 }
 
 int
-m_list_remove_last(struct m_list* list)
+m_list_remove_last(m_list* list)
 {
-	struct m_elem* last;
+	m_list_elem* last;
 	int retval;
 
 	if ((retval = m_list_last(list, &last)) != M_LIST_OK)

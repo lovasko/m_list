@@ -1,15 +1,15 @@
 #include "m_list.h"
 
-static struct m_elem*
-merge_sort(struct m_elem* first,
+static m_list_elem*
+merge_sort(m_list_elem* first,
            uint64_t length,
            int(*cmp_fn)(void*, void*, void*),
            void* payload)
 {
-	struct m_elem* a;
-	struct m_elem* b;
-	struct m_elem* e;
-	struct m_elem* tail;
+	m_list_elem* a;
+	m_list_elem* b;
+	m_list_elem* e;
+	m_list_elem* tail;
 	uint64_t segment_size;
 	uint64_t a_size;
 	uint64_t b_size;
@@ -60,7 +60,7 @@ merge_sort(struct m_elem* first,
 }
 
 int
-m_list_sort(struct m_list* list,
+m_list_sort(m_list* list,
             int(*cmp_fn)(void*, void*, void*),
             void* payload)
 {

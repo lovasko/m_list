@@ -3,7 +3,7 @@
 #include "m_list.h"
 
 int
-m_list_init(struct m_list* list)
+m_list_init(m_list* list)
 {
 	if (list == NULL)
 		return M_LIST_E_NULL;
@@ -17,7 +17,7 @@ m_list_init(struct m_list* list)
 }
 
 int
-m_list_length(struct m_list* list, uint64_t* out_length)
+m_list_length(m_list* list, uint64_t* out_length)
 {
 	if (list == NULL || out_length == NULL)
 		return M_LIST_E_NULL;
@@ -27,37 +27,17 @@ m_list_length(struct m_list* list, uint64_t* out_length)
 }
 
 int
-m_elem_data(struct m_elem* elem, void** out_data)
+m_list_copy(m_list* list_src, m_list* list_dst, uint8_t copy)
 {
-	if (elem == NULL || out_data == NULL)
-		return M_LIST_E_NULL;
-
-	*out_data = elem->data;
-	return M_LIST_OK;
-}
-
-int
-m_elem_data_size(struct m_elem* elem, size_t* out_size)
-{
-	if (elem == NULL || out_size == NULL)
-		return M_LIST_E_NULL;
-
-	*out_size = elem->size;
-	return M_LIST_OK;
-}
-
-int
-m_list_copy(struct m_list* list_src, struct m_list* list_dst, uint8_t copy)
-{
-	struct m_elem* runner_src;
-	struct m_elem* elem;
+	m_list_elem* runner_src;
+	m_list_elem* elem;
 
 	if (list_src == NULL || list_dst == NULL)
 		return M_LIST_E_NULL;
 
 	runner_src = list_src->first;
 	while (runner_src != NULL) {
-		elem = malloc(sizeof(struct m_elem));
+		elem = malloc(sizeof(m_list_elem));
 		elem->size = runner_src->size;
 
 		if (runner_src->copy == M_LIST_COPY_DEEP && copy == M_LIST_COPY_DEEP) {

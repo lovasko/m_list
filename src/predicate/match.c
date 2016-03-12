@@ -1,25 +1,25 @@
 #include "m_list.h"
 
 int
-m_list_match_all(struct m_list* list, int(*fn)(void*, void*), void* payload)
+m_list_match_all(m_list* list, int(*fn)(void*, void*), void* payload)
 {
-	return m_list_match_exactly(list, fn, list->length, payload);	
+	return m_list_match_exactly(list, fn, list->length, payload);
 }
 
 int
-m_list_match_any(struct m_list* list, int(*fn)(void*, void*), void* payload)
+m_list_match_any(m_list* list, int(*fn)(void*, void*), void* payload)
 {
 	return m_list_match_at_least(list, fn, 1, payload);
 }
 
 int
-m_list_match_exactly(struct m_list* list,
+m_list_match_exactly(m_list* list,
                      int(*fn)(void*, void*),
                      uint64_t count,
                      void* payload)
 {
 	uint64_t matched;
-	struct m_elem* runner;
+	m_list_elem* runner;
 
 	if (list == NULL || fn == NULL)
 		return M_LIST_E_NULL;
@@ -45,14 +45,14 @@ m_list_match_exactly(struct m_list* list,
 }
 
 int
-m_list_match_at_least(struct m_list* list,
-                     int(*fn)(void*, void*),
-                     uint64_t count,
-                     void* payload)
+m_list_match_at_least(m_list* list,
+                      int(*fn)(void*, void*),
+                      uint64_t count,
+                      void* payload)
 {
 	uint64_t matched;
 	uint64_t visited;
-	struct m_elem* runner;
+	m_list_elem* runner;
 
 	if (list == NULL || fn == NULL)
 		return M_LIST_E_NULL;

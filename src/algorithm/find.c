@@ -1,9 +1,9 @@
 #include "m_list.h"
 
 int
-m_list_find(struct m_list* list, int(*fn)(void*, void*), void* key, void** output)
+m_list_find(m_list* list, int(*fn)(void*, void*), void* key, void** output)
 {
-	struct m_elem* runner;
+	m_list_elem* runner;
 
 	if (list == NULL || fn == NULL)
 		return M_LIST_E_NULL;

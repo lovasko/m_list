@@ -1,9 +1,9 @@
 #include "m_list.h"
 
 int
-m_list_is_sorted(struct m_list* list, int(*cmp_fn)(void*, void*))
+m_list_is_sorted(m_list* list, int(*cmp_fn)(void*, void*))
 {
-	struct m_elem* runner;
+	m_list_elem* runner;
 
 	if (list == NULL || cmp_fn == NULL)
 		return M_LIST_E_NULL;

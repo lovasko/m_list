@@ -1,17 +1,17 @@
 #include "m_list.h"
 
 int
-m_list_build_index(struct m_list* list)
+m_list_build_index(m_list* list)
 {
 	uint64_t i;
-	struct m_elem* runner;
+	m_list_elem* runner;
 
 	if (list == NULL)
 		return M_LIST_E_NULL;
 
 	m_list_drop_index(list);
 
-	list->index = malloc(sizeof(struct m_elem*) * list->length);
+	list->index = malloc(sizeof(m_list_elem*) * list->length);
 	i = 0;
 	runner = list->first;
 	while (runner != NULL) {
@@ -24,7 +24,7 @@ m_list_build_index(struct m_list* list)
 }
 
 int
-m_list_drop_index(struct m_list* list)
+m_list_drop_index(m_list* list)
 {
 	if (list == NULL)
 		return M_LIST_E_NULL;

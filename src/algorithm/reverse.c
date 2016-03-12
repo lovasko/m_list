@@ -1,9 +1,9 @@
 #include "m_list.h"
 
 static void
-swap_elem(struct m_elem** a, struct m_elem** b)
+swap_elem(m_list_elem** a, m_list_elem** b)
 {
-	struct m_elem* tmp;
+	m_list_elem* tmp;
 
 	tmp = *a;
 	*a = *b;
@@ -11,9 +11,9 @@ swap_elem(struct m_elem** a, struct m_elem** b)
 }
 
 int
-m_list_reverse(struct m_list* list)
+m_list_reverse(m_list* list)
 {
-	struct m_elem* runner;
+	m_list_elem* runner;
 
 	if (list == NULL)
 		return M_LIST_E_NULL;

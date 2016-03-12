@@ -1,9 +1,9 @@
 #include "m_list.h"
 
 int
-m_list_map(struct m_list* list, void(*fn)(void*, void*), void* payload)
+m_list_map(m_list* list, void(*fn)(void*, void*), void* payload)
 {
-	struct m_elem* runner;
+	m_list_elem* runner;
 
 	if (list == NULL || fn == NULL)
 		return M_LIST_E_NULL;
@@ -15,9 +15,9 @@ m_list_map(struct m_list* list, void(*fn)(void*, void*), void* payload)
 }
 
 int
-m_list_map_ex(struct m_list* list, void(*fn)(struct m_elem*, uint64_t, void*), void* payload)
+m_list_map_ex(m_list* list, void(*fn)(m_list_elem*, uint64_t, void*), void* payload)
 {
-	struct m_elem* runner;
+	m_list_elem* runner;
 	uint64_t i;
 
 	if (list == NULL || fn == NULL)
@@ -30,9 +30,9 @@ m_list_map_ex(struct m_list* list, void(*fn)(struct m_elem*, uint64_t, void*), v
 }
 
 int
-m_list_map2(struct m_list* list, void(*fn)(void*, void*, void*), void* payload1, void* payload2)
+m_list_map2(m_list* list, void(*fn)(void*, void*, void*), void* payload1, void* payload2)
 {
-	struct m_elem* runner;
+	m_list_elem* runner;
 
 	if (list == NULL || fn == NULL)
 		return M_LIST_E_NULL;

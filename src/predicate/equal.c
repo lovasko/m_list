@@ -3,10 +3,10 @@
 #include "m_list.h"
 
 int
-m_list_equal(struct m_list* list_a, struct m_list* list_b)
+m_list_equal(m_list* list_a, m_list* list_b)
 {
-	struct m_elem* a;
-	struct m_elem* b;
+	m_list_elem* a;
+	m_list_elem* b;
 
 	if (list_a == NULL || list_b == NULL)
 		return M_LIST_E_NULL;

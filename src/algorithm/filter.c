@@ -1,10 +1,10 @@
 #include "m_list.h"
 
 int
-m_list_filter(struct m_list* list, int(*fn)(void*, void*), void* payload)
+m_list_filter(m_list* list, int(*fn)(void*, void*), void* payload)
 {
-	struct m_elem* runner;
-	struct m_elem* next;
+	m_list_elem* runner;
+	m_list_elem* next;
 	int retval;
 	uint64_t removed_count;
 

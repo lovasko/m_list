@@ -3,10 +3,10 @@
 #include "m_list.h"
 
 int
-m_list_join(struct m_list* list, uint8_t copy, void* data, size_t size)
+m_list_join(m_list* list, uint8_t copy, void* data, size_t size)
 {
-	struct m_elem* runner;
-	struct m_elem* elem;
+	m_list_elem* runner;
+	m_list_elem* elem;
 
 	if (list == NULL)
 		return M_LIST_E_NULL;
@@ -16,7 +16,7 @@ m_list_join(struct m_list* list, uint8_t copy, void* data, size_t size)
 
 	runner = list->first;
 	while (runner->next != NULL) {
-		elem = malloc(sizeof(struct m_elem));	
+		elem = malloc(sizeof(m_list_elem));	
 		elem->copy = copy;
 		elem->next = runner->next;
 		elem->prev = runner;
