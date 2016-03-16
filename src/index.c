@@ -11,7 +11,7 @@ m_list_build_index(m_list* list)
 
 	m_list_drop_index(list);
 
-	list->index = malloc(sizeof(m_list_elem*) * list->length);
+	list->index = malloc(sizeof(m_list_elem*) * (size_t)list->length);
 	i = 0;
 	runner = list->first;
 	while (runner != NULL) {
