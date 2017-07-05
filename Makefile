@@ -3,7 +3,24 @@ CFLAGS=-g -fPIC -Isrc -ansi -pedantic -Wall -Wextra -Weverything
 LDFLAGS= 
 SRC=../src
 EXECUTABLE=libmlist.so
-OBJECTS=access.o elem.o general.o index.o insert.o remove.o filter.o find.o join.o map.o reverse.o sort.o zip.o equal.o match.o is_sorted.o is_empty.o
+OBJECTS=      \
+  access.o    \
+  elem.o      \
+  general.o   \
+  index.o     \
+  insert.o    \
+  remove.o    \
+  filter.o    \
+  find.o      \
+  join.o      \
+  map.o       \
+  reverse.o   \
+  sort.o      \
+  zip.o       \
+  equal.o     \
+  match.o     \
+  is_sorted.o \
+  is_empty.o
 
 all: libmlist.so
 
